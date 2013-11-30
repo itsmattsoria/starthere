@@ -1,0 +1,23 @@
+//base styles
+* {
+ @include box-sizing(border-box);
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	font-size: 16px; //Em base unit
+	font-size: 100%;
+	@include font-smoothing(antialiased);
+}
+
+a {
+	
+}
+
+img {
+	max-width: 100%;
+	height: auto !important;
+}
