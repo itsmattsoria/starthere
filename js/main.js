@@ -13,4 +13,4 @@ var Main = (function ($) {
 // Pass in jQuery.
 })(jQuery);
 
-myScript.initMain();
+Main.initMain();
