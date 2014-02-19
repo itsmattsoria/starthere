@@ -28,17 +28,6 @@
   }
 }
 
-@mixin clearfix {
-  &:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-    font-size: 0;
-  }
-}
-
 // Easily verically align any element (courtesey of @seb_ekstrom)
 @mixin vertical-align {
   position: relative;
