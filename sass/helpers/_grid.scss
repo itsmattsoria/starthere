@@ -12,7 +12,7 @@ $padding: 1rem;
   }
 }
 
-.one-half-right, .two-thirds-right, .one-third-right  {margin-top: $margin;}
+.one-half-right, .two-thirds-right, .one-third-right, .one-third-middle, .one-fourth-right  {margin-top: $margin;}
 
 
 @include min-screen($bpMed) {

@@ -452,7 +452,7 @@ table {
 }
 
 /* line 15, ../sass/helpers/_grid.scss */
-.one-half-right, .two-thirds-right, .one-third-right {
+.one-half-right, .two-thirds-right, .one-third-right, .one-third-middle, .one-fourth-right {
   margin-top: 1rem;
 }
 
