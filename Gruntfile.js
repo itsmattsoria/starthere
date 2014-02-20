@@ -13,17 +13,28 @@ module.exports = function(grunt) {
       dynamic: {
         files: [{
           expand: true,
-          cwd: 'images/',
+          cwd: 'img/',
           src: ['**/*.{png,jpg,gif}'],
-          dest: 'images/'
+          dest: 'img/'
         }]
       }
+    },
+    watch: {
+      all: {
+        files: ['js/libs/*.js', 'js/main.js', 'images/*.{png,jpg,gif}'],
+        tasks: ['uglify', 'imagemin'],
+      },
+      options: {
+        spawn: false,
+      },
     },
   });
 
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-uncss');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify', 'imagemin']);
+  grunt.registerTask('default', ['watch', 'uglify', 'imagemin']);
 
 };
