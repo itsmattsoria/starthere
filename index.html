@@ -21,14 +21,17 @@
     <meta name="twitter:image" content="/favicon.png">
 
     <link rel="shortcut icon" type="image/ico" href="favicon.png" />
-
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="js/libs/respond.min.js"></script>
+    <![endif]-->
     <link rel="stylesheet" href="css/main.css">
     <script src="js/libs/modernizr.2.7.0.custom.js"></script>
   </head>
   <body>
     <header class="header_main" role="banner">
     <h1>Start Here.</h1>
-      <nav role="navigation">
+      <nav class="nav_main" role="navigation">
  
       </nav>
     </header>
@@ -40,7 +43,7 @@
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.10.2.min.js"><\/script>')</script>
-    <script src="js/main.min.js"></script>
+    <script src="js/build/main.min.js"></script>
     <script type="text/javascript">//Google Analytics
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']); // Replace "XXXXXXXX-X" with your account code
