@@ -349,7 +349,8 @@ html input[disabled] {
 /* line 347, ../sass/vendor/_normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
-  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -365,7 +366,6 @@ input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -535,15 +535,9 @@ table {
   }
 }
 /* line 2, ../sass/helpers/_base.scss */
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
+*, *::before, *::after {
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* line 6, ../sass/helpers/_base.scss */
-html {
-  -webkit-font-smoothing: antialiased;
+       box-sizing: border-box;
 }
 
 /* line 10, ../sass/helpers/_base.scss */
@@ -556,8 +550,13 @@ body {
   font-smoothing: antialiased;
 }
 
+/* line 16, ../sass/helpers/_base.scss */
+a {
+  color: inherit;
+}
+
 /* line 20, ../sass/helpers/_base.scss */
 img {
+  height: auto;
   max-width: 100%;
-  height: auto !important;
 }

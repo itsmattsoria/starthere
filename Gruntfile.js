@@ -19,22 +19,46 @@ module.exports = function(grunt) {
         }]
       }
     },
+    compass: {
+      dist: {
+        options: {
+          config: 'config.rb'
+        }
+      }
+    },
+    autoprefixer: {
+      dist: {
+        files: {
+          'css/main.css': 'css/main.css'
+        }
+      }
+    },
     watch: {
-      all: {
-        files: ['js/libs/*.js', 'js/main.js', 'images/*.{png,jpg,gif}'],
-        tasks: ['uglify', 'imagemin'],
+      scripts: {
+        files: ['js/libs/*.js', 'js/main.js'],
+        tasks: ['uglify'],
+      },
+      images: {
+        files: 'images/*.{png,jpg,gif}',
+        tasks: ['imagemin'],
+      },
+      css: {
+        files: '**/*.scss',
+        tasks: ['compass', 'autoprefixer'],
       },
       options: {
         spawn: false,
+        livereload: true,
       },
     },
   });
 
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-uncss');
 
   // Default task(s).
-  grunt.registerTask('default', ['watch', 'uglify', 'imagemin']);
+  grunt.registerTask('default', ['watch']);
 
 };
