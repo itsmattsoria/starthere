@@ -46,10 +46,6 @@ module.exports = function(grunt) {
         files: '**/*.scss',
         tasks: ['compass', 'autoprefixer'],
       },
-      options: {
-        spawn: false,
-        livereload: true,
-      },
     },
   });
 
