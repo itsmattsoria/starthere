@@ -2,7 +2,7 @@
 var Main = (function ($) {
 	return {
 		myFunction: function () {
-
+ 
 		},
 		initMain: function () {
 			$(document).ready(function () {
