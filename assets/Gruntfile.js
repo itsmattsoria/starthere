@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       dist: {
         options: {
           style: 'expanded',
-          sourcemap: 'none'
+          sourcemap: true,
         },
         files: {
           'css/main.css': 'sass/main.scss'
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'svgs/',
-          src: ['**/*.svg'],
+          src: ['svgs/*.svg'],
           dest: 'svgs/'
         }]
       }
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
       },
       default : {
         files: {
-          'svg-defs.svg': ['svgs/*.svg']
+          'svgs/build/svg-defs.svg': ['svgs/*.svg']
         },
       },
     },

@@ -3,17 +3,17 @@
 // Support for styling input placeholder text
 @mixin placeholder {
   &.placeholder {
-    @content
+    @content;
   }
   &::-moz-placeholder {
-    @content
+    @content;
   }
   &::-webkit-input-placeholder {
-    @content
+    @content;
   }
 }
 
-// Clearfix - just inlcude "@include clearfix();" on any containers that need to clear floats
+// Clearfix
 @mixin clearfix {
   *zoom: 1;
   &:before, &:after {
@@ -36,56 +36,6 @@
   -o-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-
-// Easy vendor prefixes (used with properties unsupported by compass)
-@mixin vendor-prefix($name, $argument) {
-  #{$name}: $argument;
-  -webkit-#{$name}: $argument;
-  -ms-#{$name}: $argument;
-  -moz-#{$name}: $argument;
-  -o-#{$name}: $argument;
-}
-
-// Add font-smoothing support
-@mixin font-smoothing($font-smoothing) {
-//  none | antialiased | subpixel-antialiased
-  -webkit-font-smoothing: $font-smoothing;
-  -moz-font-smoothing: $font-smoothing;
-  -ms-font-smoothing: $font-smoothing;
-  font-smoothing: $font-smoothing;
-}
-
-// Auto-create vendor prefixes on any property (Credit: @csswizardry)
-@mixin vendor($property, $value...){
-    -webkit-#{$property}:$value;
-       -moz-#{$property}:$value;
-        -ms-#{$property}:$value;
-         -o-#{$property}:$value;
-            #{$property}:$value;
-}
-
-// Vendor prefixes for css animation keyframes (credit: @integralist)
-@mixin keyframe ($animation-name){
-    @-webkit-keyframes $animation-name{
-        @content;
-    }
-
-    @-moz-keyframes $animation-name{
-        @content;
-    }
-
-    @-ms-keyframes $animation-name{
-        @content;
-    }
-
-    @-o-keyframes $animation-name{
-        @content;
-    }
-
-    @keyframes $animation-name{
-        @content;
-    }
 }
 
 // retina.scss

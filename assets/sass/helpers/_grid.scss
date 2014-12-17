@@ -1,7 +1,7 @@
 // Grid
 
-$margin: 1rem;
-$padding: 1rem;
+$margin: 1em;
+$padding: 1em;
 
 .grid {
   width: 100%;
@@ -15,14 +15,14 @@ $padding: 1rem;
 .one-half-right, .two-thirds-right, .one-third-right, .one-third-middle, .one-fourth-right  {margin-top: $margin;}
 
 
-@include min-screen($bpMed) {
-  .one-half-left {display: inline-block; width: 50% !important; float: left; padding-right: $padding;}
-  .one-half-right {display: inline-block; width: 50% !important; float: left; padding-left: $padding; margin-top: 0;}
-  .one-third-left {display: inline-block; width: 33.3333333% !important; float: left; padding-right: $padding;}
-  .two-thirds-right {display: inline-block; width: 66.6666667% !important; float: left; padding-left: $padding; margin-top: 0;}
-  .one-third-middle {display: inline-block; width: 33.3333333% !important; float: left; padding-right: $padding; margin-top: 0;}
-  .one-third-right {display: inline-block; width: 33.333333% !important; float: left; padding-left: $padding; margin-top: 0;}
-  .two-thirds-left {display: inline-block; width: 66.6666667% !important; float: left; padding-right: $padding;}
-  .one-fourth-left {display: inline-block; width: 25% !important; float: left; padding-right: $padding;}
-  .one-fourth-right {display: inline-block; width: 25% !important; float: left; padding-left: $padding; margin-top: 0;}
+@include min-screen($bpMd) {
+  .one-half-left {display: inline-block; width: 50%; float: left; padding-right: $padding;}
+  .one-half-right {display: inline-block; width: 50%; float: left; padding-left: $padding; margin-top: 0;}
+  .one-third-left {display: inline-block; width: 33.3333333%; float: left; padding-right: $padding;}
+  .two-thirds-right {display: inline-block; width: 66.6666667%; float: left; padding-left: $padding; margin-top: 0;}
+  .one-third-middle {display: inline-block; width: 33.3333333%; float: left; padding-right: $padding; margin-top: 0;}
+  .one-third-right {display: inline-block; width: 33.333333%; float: left; padding-left: $padding; margin-top: 0;}
+  .two-thirds-left {display: inline-block; width: 66.6666667%; float: left; padding-right: $padding;}
+  .one-fourth-left {display: inline-block; width: 25%; float: left; padding-right: $padding;}
+  .one-fourth-right {display: inline-block; width: 25%; float: left; padding-left: $padding; margin-top: 0;}
 }

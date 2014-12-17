@@ -1,0 +1,39 @@
+//base styles
+*, *::before, *::after {
+ box-sizing: border-box;
+}
+
+html {
+}
+
+body {
+	font-size: 16px; //Em base unit
+	font-size: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+a {
+	color: inherit;
+}
+
+img {
+  height: auto;
+	max-width: 100%;
+}
+
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  max-width: 1600px; // change to whatever 
+  position: relative;
+  @include clearfix();
+  @include min-screen($bpMd) {
+    // set breakpoints on a per-module basis when possible
+  }
+}

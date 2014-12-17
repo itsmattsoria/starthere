@@ -8,12 +8,13 @@
 @import "helpers/variables";
 @import "helpers/typography";
 @import "helpers/grid";
-@import "helpers/base";
 
 // Vendor
 
 // Components
+@import "components/base";
 @import "components/header";
 @import "components/footer";
 
 // Pages
+@import "pages/home";
