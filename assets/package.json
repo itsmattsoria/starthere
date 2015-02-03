@@ -15,6 +15,7 @@
     "grunt-autoprefixer": "~1.0.1",
     "grunt-svgmin": "~1.0.0",
     "grunt-svgstore": "~0.3.6",
+    "grunt-svg2png": "~0.2.5",
     "load-grunt-tasks": "~0.2.0"
   }
 }

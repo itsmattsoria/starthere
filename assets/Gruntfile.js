@@ -47,20 +47,36 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'svgs/',
-          src: ['svgs/*.svg'],
+          src: ['*.svg'],
           dest: 'svgs/'
         }]
+      },
+      options: {
+        plugins: [
+            { removeViewBox: false },               // don't remove the viewbox atribute from the SVG
+            { removeEmptyAttrs: false }             // don't remove Empty Attributes from the SVG
+        ]
       }
     },
     svgstore: {
-      options: {
-        prefix: 'icon-'
-      },
-      default : {
+      dist: {
         files: {
           'svgs/build/svg-defs.svg': ['svgs/*.svg']
         },
       },
+      options: {
+        cleanup: true
+      }
+    },
+    svg2png: {
+      dist: {
+        files: [{ 
+          flatten: true,
+          cwd: 'svgs/', 
+          src: ['*.svg'], 
+          dest: '../' }
+        ]
+      }
     },
     watch: {
       scripts: {
@@ -86,7 +102,7 @@ module.exports = function(grunt) {
       },
       svgs: {
         files: 'svgs/*.svg',
-        tasks: ['svgmin', 'svgstore'],
+        tasks: ['svgmin', 'svgstore', 'svg2png'],
         options: {
           livereload: true,
         },
@@ -101,6 +117,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-svgmin');
   grunt.loadNpmTasks('grunt-svgstore');
+  grunt.loadNpmTasks('grunt-svg2png');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
