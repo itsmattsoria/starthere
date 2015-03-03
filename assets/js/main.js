@@ -7,7 +7,7 @@ var Main = (function ($) {
 		initMain: function () {
 			$(document).ready(function () {
 				Main.myFunction();
-			})
+			});
 		}
 	};
 // Pass in jQuery.

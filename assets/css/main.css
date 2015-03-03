@@ -468,7 +468,11 @@ table {
     margin-top: 0;
   }
 }
-*, *::before, *::after {
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
   box-sizing: border-box;
 }
 
