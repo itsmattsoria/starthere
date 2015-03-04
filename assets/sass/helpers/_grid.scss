@@ -5,24 +5,31 @@ $padding: 1em;
 
 .grid {
   width: 100%;
-  display: block;
-  @include clearfix();
-  .grid_item {
-    text-align: center;
-  }
+  display: flex;
 }
 
 .one-half-right, .two-thirds-right, .one-third-right, .one-third-middle, .one-fourth-right  {margin-top: $margin;}
 
 
 @include min-screen($bpMd) {
-  .one-half-left {display: inline-block; width: 50%; float: left; padding-right: $padding;}
-  .one-half-right {display: inline-block; width: 50%; float: left; padding-left: $padding; margin-top: 0;}
-  .one-third-left {display: inline-block; width: 33.3333333%; float: left; padding-right: $padding;}
-  .two-thirds-right {display: inline-block; width: 66.6666667%; float: left; padding-left: $padding; margin-top: 0;}
-  .one-third-middle {display: inline-block; width: 33.3333333%; float: left; padding-right: $padding; margin-top: 0;}
-  .one-third-right {display: inline-block; width: 33.333333%; float: left; padding-left: $padding; margin-top: 0;}
-  .two-thirds-left {display: inline-block; width: 66.6666667%; float: left; padding-right: $padding;}
-  .one-fourth-left {display: inline-block; width: 25%; float: left; padding-right: $padding;}
-  .one-fourth-right {display: inline-block; width: 25%; float: left; padding-left: $padding; margin-top: 0;}
+  .flex-item {
+    display: flex;
+    flex-basis: auto;
+  }
+  .one-fourth {
+    max-width: 25%;
+    flex-basis: 25%;
+  }
+  .one-third {
+    flex-basis: 33.3333333%;
+    max-width: 33.3333333%;
+  }
+  .one-half {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+  .two-thirds {
+    flex-basis: 66.6666667%;
+    max-width: 66.6666667%;
+  }
 }
