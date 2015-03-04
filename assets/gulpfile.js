@@ -68,7 +68,7 @@ gulp.task('svgs', function() {
         }]
     }))
     .pipe(gulp.dest('svgs'))
-    .pipe(svgstore())
+    .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename({suffix: '-defs'}))
     .pipe(gulp.dest('svgs/build'))
 });
