@@ -433,7 +433,6 @@ table {
 body {
   font-size: 16px;
   font-size: 100%;
-  -webkit-font-smoothing: antialiased;
 }
 
 p {
