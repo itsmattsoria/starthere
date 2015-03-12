@@ -148,3 +148,11 @@
     margin-bottom: 0;
   }
 }
+
+// Double ampersand selector mixin for left-margin rows
+@mixin doubly($margin) {
+  & + & {
+    margin-left: $margin;
+    @content;
+  }
+}
