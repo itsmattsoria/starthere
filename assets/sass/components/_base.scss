@@ -1,9 +1,10 @@
 //base styles
 *, *::before, *::after {
- box-sizing: border-box;
+ box-sizing: inherit;
 }
 
 html {
+  box-sizing: border-box;
 }
 
 body {
@@ -23,6 +24,16 @@ a {
 img {
   height: auto;
 	max-width: 100%;
+}
+
+// Utility classes
+.visually-hidden {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .wrap {
