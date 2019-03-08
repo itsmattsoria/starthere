@@ -16,7 +16,7 @@ def production():
   env.git_branch = 'master'
   env.remote_protocol = 'https'
 
-def assets():
+def build():
   local('npx gulp --production')
 
 def deploy():
