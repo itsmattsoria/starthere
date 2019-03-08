@@ -1,23 +1,34 @@
+/*jshint latedef:false*/
+
+//=include "../bower_components/jquery/dist/jquery.js"
+
 var Main = (function($) {
 
-  var screen_width = 0,
-      breakpoint_small = false,
-      breakpoint_medium = false,
-      breakpoint_large = false,
-      breakpoint_array = [480,1000,1200],
-      $document,
-      loadingTimer;
+  var $document,
+      $window,
+      $body,
+      breakpointIndicatorString,
+      breakpoint_xl,
+      breakpoint_nav,
+      breakpoint_lg,
+      breakpoint_md,
+      breakpoint_sm,
+      breakpoint_xs,
+      resizeTimer,
+      transitionElements,
+      isAnimating = false;
 
   function _init() {
-    // touch-friendly fast clicks
-    FastClick.attach(document.body);
-
     // Cache some common DOM queries
     $document = $(document);
-    $('body').addClass('loaded');
+    $window = $(window);
+    $body = $('body');
 
     // Set screen size vars
     _resize();
+
+    // Transition elements to enable/disable on resize
+    transitionElements = [];
 
     // Init functions
     _testInit();
@@ -29,64 +40,58 @@ var Main = (function($) {
       }
     });
 
-    // Smoothscroll links
-    $('a.smoothscroll').click(function(e) {
-      e.preventDefault();
-      var href = $(this).attr('href');
-      _scrollBody($(href));
-    });
-
-    // Scroll down to hash afer page load
-    $(window).load(function() {
-      if (window.location.hash) {
-        _scrollBody($(window.location.hash)); 
-      }
-    });
-
   } // end init()
 
-  function _scrollBody(element, duration, delay) {
-    if ($('#wpadminbar').length) {
-      wpOffset = $('#wpadminbar').height();
-    } else {
-      wpOffset = 0;
-    } 
-    element.velocity("scroll", {
-      duration: duration,
-      delay: delay,
-      offset: -wpOffset
-    }, "easeOutSine");
-  }
-
   function _testInit() {
-    console.log('Testing testing...is this thing on?');
+    console.log('Testing testing testing...is this thing on?');
   }
 
-  // Track ajax pages in Analytics
-  function _trackPage() {
-    if (typeof ga !== 'undefined') { ga('send', 'pageview', document.location.href); }
+  // Disabling transitions on certain elements on resize
+  function _disableTransitions() {
+    $.each(transitionElements, function() {
+      $(this).css('transition', 'none');
+    });
   }
 
-  // Track events in Analytics
-  function _trackEvent(category, action) {
-    if (typeof ga !== 'undefined') { ga('send', 'event', category, action); }
+  function _enableTransitions() {
+    $.each(transitionElements, function() {
+      $(this).attr('style', '');
+    });
   }
 
-  // Called in quick succession as window is resized
+  /**
+   * Called in quick succession as window is resized
+   */
   function _resize() {
-    screenWidth = document.documentElement.clientWidth;
-    breakpoint_small = (screenWidth > breakpoint_array[0]);
-    breakpoint_medium = (screenWidth > breakpoint_array[1]);
-    breakpoint_large = (screenWidth > breakpoint_array[2]);
+    // Check breakpoint indicator in DOM ( :after { content } is controlled by CSS media queries )
+    breakpointIndicatorString = window.getComputedStyle(
+      document.querySelector('#breakpoint-indicator'), ':after'
+    ).getPropertyValue('content')
+    .replace(/['"]+/g, '');
+
+    // Determine current breakpoint
+    breakpoint_xl = breakpointIndicatorString === 'xl';
+    breakpoint_nav = breakpointIndicatorString === 'nav' || breakpoint_xl;
+    breakpoint_lg = breakpointIndicatorString === 'lg' || breakpoint_nav;
+    breakpoint_md = breakpointIndicatorString === 'md' || breakpoint_lg;
+    breakpoint_sm = breakpointIndicatorString === 'sm' || breakpoint_md;
+    breakpoint_xs = breakpointIndicatorString === 'xs' || breakpoint_sm;
+
+    // Disable transitions when resizing
+    _disableTransitions();
+
+    // Functions to run on resize end
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      // Re-enable transitions
+      _enableTransitions();
+    }, 250);
   }
 
   // Public functions
   return {
     init: _init,
-    resize: _resize,
-    scrollBody: function(section, duration, delay) {
-      _scrollBody(section, duration, delay);
-    }
+    resize: _resize
   };
 
 })(jQuery);

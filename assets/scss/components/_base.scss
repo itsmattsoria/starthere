@@ -1,0 +1,35 @@
+//base styles
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  color: color(black);
+	background: color(white);
+}
+
+a {
+	color: inherit;
+}
+
+img {
+  height: auto;
+	max-width: 100%;
+}
+
+.sitewrapper {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  @include clearfix();
+  padding: 0 $padding-sm;
+  max-width: $sitewrapper;
+  @include media-md {
+    padding: 0 $padding-md;
+  }
+}

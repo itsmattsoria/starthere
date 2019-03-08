@@ -1,0 +1,26 @@
+// Variables
+
+// Colors
+$colors: (
+  white: #ffffff,
+  black: #333333
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+// Breakpoints
+$breakpoint-sm: 520px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1000px;
+$breakpoint-nav: 1100px;
+$breakpoint-xl: 1200px;
+
+// Site Wrapper
+$sitewrapper: 1400px;
+
+// Padding/spacing
+$beat: 10px;
+$padding-sm: 20px;
+$padding-md: 40px;

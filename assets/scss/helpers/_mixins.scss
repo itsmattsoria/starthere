@@ -1,0 +1,65 @@
+// Mixins
+
+// Ye olde clearfix
+@mixin clearfix {
+  &:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+// Smooth text
+@mixin smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Responsive mixins by Andy Richardson (@andimal): https://github.com/andimal/sass-responsive-mixin-madness
+@mixin media-xs() {
+  @media screen and (max-width: $breakpoint-sm - 1) {
+    @content;
+  }
+}
+@mixin media-sm() {
+  @media screen and (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+@mixin media-md() {
+  @media screen and (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+@mixin media-lg() {
+  @media screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+@mixin media-nav() {
+  @media screen and (min-width: $breakpoint-nav) {
+    @content;
+  }
+}
+@mixin media-xl() {
+  @media screen and (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// On-the fly media-queries
+@mixin screen($res-min, $res-max) {
+  @media screen and (min-width: $res-min) and (max-width: $res-max) {
+    @content;
+  }
+}
+@mixin max-screen($res) {
+  @media screen and (max-width: $res - 1px) {
+    @content;
+  }
+}
+@mixin min-screen($res) {
+  @media screen and (min-width: $res) {
+    @content;
+  }
+}
