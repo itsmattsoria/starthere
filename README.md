@@ -1,11 +1,41 @@
-###Start Here.###
----
-A boilerplate I use for starting new HTML projects. The boilerplate runs on the following resources:  
+# Start Here.
+
+## A boilerplate I use for starting new HTML projects. 
+
+The boilerplate runs on the following resources:  
 * [SASS (SCSS syntax)](http://sass-lang.com/)
 * [Autoprefixer](https://github.com/postcss/autoprefixer)
-* [H5BP .htaccess file](https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess)
-* [Grunt.js](http://gruntjs.com/)
-* [Modernizr](http://modernizr.com/download/#-flexbox-flexboxlegacy-inlinesvg-smil-svg-svgclippaths-touch-shiv-cssclasses-teststyles-testprop-testallprops-prefixes-domprefixes-load)
+* [Gulp.js](http://gulpjs.com/)
 * [Normalize.css](http://necolas.github.io/normalize.css/)
-* [JQuery](http://jquery.com/)
-* [Retina.js](http://retinajs.com/)
+* [JQuery](https://jquery.org/)
+* [Fabric](http://www.fabfile.org/)
+
+## Structure
+```
+├── assets
+│   ├── bower_components
+│   ├── dist
+│   │   ├── css
+│   │   ├── images
+│   │   └── js
+│   ├── images
+│   ├── js
+│   │   ├── libs
+│   │   └── no-build
+│   ├── scss
+│   │   ├── components
+│   │   ├── helpers
+│   │   ├── pages
+│   │   └── vendor
+│   └── svgs
+│       └── build
+├── build
+│   └── assets
+│       └── dist
+│           ├── css
+│           ├── images
+│           └── js
+|   └── index.html
+├── mode_modules
+└── index.html
+```
