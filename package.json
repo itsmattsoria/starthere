@@ -1,47 +1,41 @@
 {
-  "name": "Starthere",
-  "version": "1.0.0",
-  "author": "Matt Soria",
-  "homepage": "https://www.mattsoria.com/",
-  "license": "ISC",
-  "main": "gulpfile.js",
-  "dependencies": {},
-  "devDependencies": {
-    "browser-sync": "^2.23.6",
-    "del": "^2.0.2",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.0.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssnano": "^2.1.1",
-    "gulp-filter": "^5.1.0",
-    "gulp-gzip": "^1.4.2",
-    "gulp-if": "^1.2.5",
-    "gulp-imagemin": "^5.0.3",
-    "gulp-include": "^2.0.2",
-    "gulp-jshint": "^2.1.0",
-    "gulp-notify": "^2.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-rev": "^6.0.1",
-    "gulp-rev-all": "^0.9.8",
-    "gulp-rev-delete-original": "^0.2.3",
-    "gulp-rev-replace": "^0.4.4",
-    "gulp-sass": "^2.3.2",
-    "gulp-scss": "^1.4.0",
-    "gulp-sourcemaps": "^1.12.1",
-    "gulp-svgmin": "^1.2.4",
-    "gulp-svgstore": "^6.1.1",
-    "gulp-uglify": "^1.4.1",
-    "gulp-util": "^3.0.8",
-    "jshint": "^2.9.5",
-    "jshint-stylish": "^2.2.1",
-    "minimist": "^1.2.0",
-    "run-sequence": "^1.1.2"
-  },
+  "private": true,
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=development run-s mix",
+    "build:production": "cross-env NODE_ENV=production run-s clean mix",
+    "start": "cross-env NODE_ENV=development run-s \"mix --watch\"",
+    "hot": "cross-env NODE_ENV=development run-s build mix:hot",
+    "mix": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "mix:hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "clean": "run-p clean:*",
+    "clean:dist": "rimraf dist",
+    "clean:views": "rimraf storage/framework/views/*.php",
+    "lint": "run-s -c lint:*",
+    "lint:scripts": "eslint resources/assets/scripts",
+    "test": "run-s -c lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:poopsplat/starthere.git"
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2",
+    "@wordpress/browserslist-config": "^2.6.0",
+    "babel-eslint": "^10.0.2",
+    "browser-sync": "^2.26",
+    "browser-sync-webpack-plugin": "2.2",
+    "cross-env": "^5.2",
+    "eslint": "^6.2",
+    "eslint-plugin-import": "^2.18",
+    "laravel-mix": "^4.1",
+    "npm-run-all": "^4.1",
+    "rimraf": "^3.0",
+    "sass": "^1.22",
+    "sass-loader": "7.*",
+    "svg-spritemap-webpack-plugin": "^3.4.0",
+    "vue-template-compiler": "^2.6"
+  },
+  "dependencies": {
+    "jquery": "^3.4",
+    "js-dom-router": "^1.0"
   }
 }

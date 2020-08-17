@@ -2,8 +2,8 @@
 
 // Colors
 $colors: (
-  white: #ffffff,
-  black: #333333
+  'white': #ffffff,
+  'black': #333333
 );
 
 @function color($color-name) {

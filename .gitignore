@@ -1,8 +1,8 @@
-.sass-cache
 node_modules
 npm-debug.log
 *.sublime-project
 *.sublime-workspace
 .DS_Store
-bower_components
 fabfile.pyc
+dist
+yarn-error.log
