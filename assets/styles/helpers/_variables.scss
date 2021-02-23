@@ -22,5 +22,6 @@ $sitewrapper: 1400px;
 
 // Padding/spacing
 $beat: 10px;
-$padding-sm: 20px;
-$padding-md: 40px;
+$padding-sm: $beat * 2;
+$padding-md: $padding-sm * 2;
+$padding-lg: $padding-md * 2;

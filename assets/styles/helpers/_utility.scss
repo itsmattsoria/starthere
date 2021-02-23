@@ -53,3 +53,31 @@
     outline: none;
   }
 }
+
+// Input reset
+.input-reset {
+  padding: 0;
+  border: none;
+  appearance: none;
+  background: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Alignment
+.align {
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-justify {
+    text-align: justify;
+  }
+}
