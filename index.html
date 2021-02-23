@@ -5,15 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>Start Here.</title>
 
+    <link rel="stylesheet" href="dist/assets/styles/main.css" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript>
+      <link rel="stylesheet" href="dist/assets/styles/main.css" media="all">
+    </noscript>
+
+    <link rel="stylesheet" href="dist/assets/styles/fonts.css" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript>
+      <link rel="stylesheet" href="dist/assets/styles/fonts.css" media="all">
+    </noscript>
+
+    <link rel="shortcut icon" type="image/ico" href="dist/assets/images/favicon.png">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="canonical" href="">
     <meta name="description" content="">
     <meta property="og:title" content="" />
     <meta property="og:image" content="" />
     <meta property="og:url" content="" />
     <meta property="og:description" content="" />
-
-    <link rel="stylesheet" href="dist/assets/styles/main.css">
-    <link rel="shortcut icon" type="image/ico" href="dist/assets/images/favicon.png">
 
     <!-- Inject SVGs Defs for SVG icon use -->
     <script>
@@ -42,15 +55,82 @@
 
     <main class="site-main" role="main">
       <div class="sitewrapper">
-        <p>A front-end template used on projects by <a href="https://github.com/poopsplat">@poopsplat</a>.</p>
-        <p>Start here, and carry on.</p>
-        <p><svg class="icon icon-poop" aria-hidden="true" role="presentation"><use xlink:href="#icon-poop"/></svg></p>
+        <!-- Demo content: delete this junk! -->
+        <div class="demo">
+          <style>
+            .demo .box {
+              padding: 50px;
+              margin-bottom: 50px;
+              font-family: monospace;
+              outline: 1px solid #000;
+            }
+          </style>
+
+          <p>A front-end template used on projects by <a href="https://github.com/poopsplat">@poopsplat</a>.</p>
+          <p>Start here, and carry on.</p>
+          <p><svg class="icon icon-smiley" aria-hidden="true" role="presentation"><use xlink:href="#icon-smiley"/></svg></p>
+
+          <div class="grid spaced">
+            <!-- halves -->
+            <div class="col-md-1-2">
+              <div class="box">
+                <h4>.col-md-1-2</h4>
+              </div>
+            </div>
+            <div class="col-md-1-2">
+              <div class="box">
+                <h4>.col-md-1-2</h4>
+              </div>
+            </div>
+            <!-- END halves -->
+            <!-- thirds -->
+            <div class="col-md-1-3">
+              <div class="box">
+                <h4>.col-md-1-3</h4>
+              </div>
+            </div>
+            <div class="col-md-2-3">
+              <div class="box">
+                <h4>.col-md-2-3</h4>
+              </div>
+            </div>
+            <!-- END thirds -->
+            <!-- quarters -->
+            <div class="col-md-1-4">
+              <div class="box">
+                <h4>.col-md-1-4</h4>
+              </div>
+            </div>
+            <div class="col-md-1-2">
+              <div class="box">
+                <h4>.col-md-1-2</h4>
+              </div>
+            </div>
+            <div class="col-md-1-4">
+              <div class="box">
+                <h4>.col-md-1-4</h4>
+              </div>
+            </div>
+            <div class="col-md-3-4">
+              <div class="box">
+                <h4>.col-md-3-4</h4>
+              </div>
+            </div>
+            <div class="col-md-1-4">
+              <div class="box">
+                <h4>.col-md-1-4</h4>
+              </div>
+            </div>
+            <!-- END quarters -->
+          </div>
+        </div>
+        <!-- END demo content junk -->
       </div>
     </main>
 
     <footer class="site-footer" role="contentinfo">
       <div class="sitewrapper">
-
+        <p>Footer.</p>
       </div>
     </footer>
 
