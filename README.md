@@ -1,5 +1,7 @@
 # Start here.
 
+![start here preview image](https://repository-images.githubusercontent.com/14812595/19f5cd00-f7b2-11ea-8ac8-08899a1e5b0c)
+
 ## A boilerplate I use for starting new static projects. 
 
 The boilerplate runs on the following resources:  
