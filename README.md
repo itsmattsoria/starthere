@@ -2,9 +2,9 @@
 
 ![start here preview image](https://repository-images.githubusercontent.com/14812595/19f5cd00-f7b2-11ea-8ac8-08899a1e5b0c)
 
-## A boilerplate I use for starting new static projects. 
+## A boilerplate I use for starting new static projects.
 
-The boilerplate runs on the following resources:  
+The boilerplate runs on the following resources:
 * [SASS (SCSS syntax)](http://sass-lang.com/)
 * [Laravel-mix](https://laravel-mix.com/)
 * [Webpack](https://webpack.js.org/)
@@ -42,3 +42,6 @@ HTML files in the root and assets saved to `/assets` are working files. Assets i
 ├── webpack.mix.js
 └── index.html
 ```
+
+## To-do:
+- [ ] Convert grid system to use css grid instead of flex
