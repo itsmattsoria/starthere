@@ -17,9 +17,20 @@ a {
 	color: inherit;
 }
 
+// Thanks @zachleat: https://www.zachleat.com/web/fluid-images/
 img {
+  max-width: 100%;
+}
+img[width] {
+  width: auto;
+}
+img[width][height] {
   height: auto;
-	max-width: 100%;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
 }
 
 .sitewrapper {
