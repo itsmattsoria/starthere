@@ -1,6 +1,6 @@
 // Grid
 
-$columns: 10;
+$columns: 12;
 $column-width: 100% / $columns;
 
 // Quickie columns() function
@@ -13,110 +13,72 @@ $column-width: 100% / $columns;
   width: columns(1);
 }
 
+.grid-spaced {
+  gap: $padding-sm;
+
+  @include media-md {
+    gap: $padding-md;
+  }
+
+  @include media-lg {
+    &.spaced-lg {
+      gap: $padding-lg;
+    }
+  }
+}
+// If you need the grid to have a gutter,
+// add 'gutter' as a class to the '.grid' container
+.grid-gutter {
+  padding-left: $padding-sm;
+  padding-right: $padding-sm;
+
+  @include media-md {
+    padding-left: $padding-md;
+    padding-right: $padding-md;
+  }
+}
+
+// Default Grid based $columns
+// Uses CSS grid: https://developer.mozilla.org/en-US/docs/Web/CSS/grid
 .grid {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
 
   > * {
-    width: 100%;
-    max-width: 100%;
-    flex-basis: 100%;
+    grid-column: span $columns;
   }
 
-  &.align-right {
-    flex-direction: row-reverse;
-  }
+  // Auto layout
+  &.grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min, 250px), 100%), 1fr));
 
-  &.align-left {
-    align-items: flex-start;
-  }
-
-  // SPACING:
-  // If you need them spaced with padding,
-  // just add "spaced" class to the ".grid" container.
-  // If a column item needs to be spaced but also
-  // has a background color then add an inner container
-  // to handle the background — use the non-specific
-  // '-inner' class if you need to:
-  // <div class="grid spaced">
-  //   <div class="col-1-2 -left">
-  //     <div class="-inner" style="background:black;">
-  //       (content)
-  //     </div>
-  //   </div>
-  // </div>
-  &.spaced {
-    margin-left: -#{$padding-sm / 2};
-    width: calc(100% + #{$padding-sm});
-
-    > [class*='col-'] {
-      padding: 0 #{$padding-sm / 2};
-    }
-
-    @include media-md {
-      margin-left: -#{$padding-md / 2};
-      width: calc(100% + #{$padding-md});
-
-      > [class*='col-'] {
-        padding: 0 #{$padding-md / 2};
-      }
-    }
-
-    @include media-lg {
-      &.spaced-lg {
-        margin-left: -#{$padding-lg / 2};
-        width: calc(100% + #{$padding-lg});
-
-        > [class*='col-'] {
-          padding: 0 #{$padding-lg / 2};
-        }
-      }
-    }
-
-    @include media-xl {
-      &.spaced-lg {
-        margin-left: -#{$padding-lg};
-        width: calc(100% + #{$padding-lg * 2});
-
-        > [class*='col-'] {
-          padding: 0 $padding-lg;
-        }
-      }
-    }
-  }
-  // If you need the grid to have a gutter,
-  // add 'gutter' as a class to the '.grid' container
-  &.gutter {
-    padding-left: $padding-sm;
-
-    [class*='col-'] {
-      padding-right: $padding-sm;
-    }
-
-    @include media-md {
-      padding-left: $padding-md;
-
-      [class*='col-'] {
-        padding-right: $padding-md;
-      }
+    > * {
+      grid-column: auto;
     }
   }
 }
 
-// Float Grid Alternative
-.float-grid {
-  width: 100%;
-  @include clearfix;
-
-  > * {
-    width: 100%;
-    float: none;
+// Easy col classes for each breakpoint
+@mixin colClasses($breakpoint: '') {
+  @for $i from 1 through $columns / 2 {
+    @for $j from 1 through $columns / 2 {
+      @if $i < $j {
+        @if $i > 1 and $i / $j == 1 / 2 or $i > 1 and $i / $j == 1 / 3 or $i > 2 and $i / $j == 2 / 3 {
+        } @else {
+          .col#{$breakpoint}-#{$i}-#{$j} {
+            grid-column: span #{($columns / $j) * $i};
+          }
+        }
+      }
+    }
   }
-
-  @include media-md {
-    > * {
-      float: left;
+}
+// Easey span classes for each breakpoint
+@mixin spanClasses($breakpoint: '') {
+  @for $i from 1 through $columns {
+    .span#{$breakpoint}-#{$i} {
+      grid-column: span #{$i};
     }
   }
 }
@@ -125,294 +87,55 @@ $column-width: 100% / $columns;
 // The convention is 'col-' followed by a ratio,
 // which is written as (for example) '1-2' for '1/2'.
 // 1/3 = 'col-1-3', 2/3 = 'col-2-3', etc.
-
-.col-1-6 {
-  max-width: 16.6667%;
-  flex-basis: 16.6667%;
-}
-.col-1-5 {
-  max-width: 20%;
-  flex-basis: 20%;
-}
-.col-1-4 {
-  max-width: 25%;
-  flex-basis: 25%;
-}
-.col-1-3 {
-  flex-basis: 33.3333%;
-  max-width: 33.3333%;
-}
-.col-1-2 {
-  flex-basis: 50%;
-  max-width: 50%;
-}
-.col-2-3 {
-  flex-basis: 66.6667%;
-  max-width: 66.6667%;
-}
-.col-3-4 {
-  flex-basis: 75%;
-  max-width: 75%;
-}
+@include colClasses();
+@include spanClasses();
 
 @include media-sm {
-  .sm-auto {
-    width: auto;
-    max-width: none;
-    flex-basis: auto;
-  }
-  .sm-full {
-    width: 100%;
-    max-width: none;
-    flex-basis: 100%;
-  }
-  .col-sm-1-6 {
-    max-width: 16.6667%;
-    flex-basis: 16.6667%;
-  }
-  .col-sm-1-5 {
-    max-width: 20%;
-    flex-basis: 20%;
-  }
-  .col-sm-1-4 {
-    max-width: 25%;
-    flex-basis: 25%;
-  }
-  .col-sm-1-3 {
-    flex-basis: 33.3333%;
-    max-width: 33.3333%;
-  }
-  .col-sm-1-2 {
-    flex-basis: 50%;
-    max-width: 50%;
-  }
-  .col-sm-2-3 {
-    flex-basis: 66.6667%;
-    max-width: 66.6667%;
-  }
-  .col-sm-3-4 {
-    flex-basis: 75%;
-    max-width: 75%;
-  }
-  // Order classes
-  @for $i from 0 through 6 {
-    .sm-order-#{$i} {
-      order: $i;
-    }
-  }
+  @include colClasses('-sm');
+  @include spanClasses('-sm');
 }
 
 @include media-md {
-  .md-auto {
-    width: auto;
-    max-width: none;
-    flex-basis: auto;
-  }
-  .md-full {
-    width: 100%;
-    max-width: none;
-    flex-basis: 100%;
-  }
-  .col-md-1-6 {
-    max-width: 16.6667%;
-    flex-basis: 16.6667%;
-  }
-  .col-md-1-5 {
-    max-width: 20%;
-    flex-basis: 20%;
-  }
-  .col-md-1-4 {
-    max-width: 25%;
-    flex-basis: 25%;
-  }
-  .col-md-1-3 {
-    flex-basis: 33.3333%;
-    max-width: 33.3333%;
-  }
-  .col-md-1-2 {
-    flex-basis: 50%;
-    max-width: 50%;
-  }
-  .col-md-2-3 {
-    flex-basis: 66.6667%;
-    max-width: 66.6667%;
-  }
-  .col-md-3-4 {
-    flex-basis: 75%;
-    max-width: 75%;
-  }
-  // Order classes
-  @for $i from 0 through 6 {
-    .md-order-#{$i} {
-      order: $i;
-    }
-  }
+  @include colClasses('-md');
+  @include spanClasses('-md');
 }
 
 @include media-lg {
-  .lg-auto {
-    width: auto;
-    max-width: none;
-    flex-basis: auto;
-  }
-  .lg-full {
-    width: 100%;
-    max-width: none;
-    flex-basis: 100%;
-  }
-  .col-lg-1-6 {
-    max-width: 16.6667%;
-    flex-basis: 16.6667%;
-  }
-  .col-lg-1-5 {
-    max-width: 20%;
-    flex-basis: 20%;
-  }
-  .col-lg-1-4 {
-    max-width: 25%;
-    flex-basis: 25%;
-  }
-  .col-lg-1-3 {
-    flex-basis: 33.3333%;
-    max-width: 33.3333%;
-  }
-  .col-lg-1-2 {
-    flex-basis: 50%;
-    max-width: 50%;
-  }
-  .col-lg-2-3 {
-    flex-basis: 66.6667%;
-    max-width: 66.6667%;
-  }
-  .col-lg-3-4 {
-    flex-basis: 75%;
-    max-width: 75%;
-  }
-  // Order classes
-  @for $i from 0 through 6 {
-    .lg-order-#{$i} {
-      order: $i;
-    }
-  }
+  @include colClasses('-lg');
+  @include spanClasses('-lg');
 }
 
 @include media-nav {
-  .nav-auto {
-    width: auto;
-    max-width: none;
-    flex-basis: auto;
-  }
-  .nav-full {
-    width: 100%;
-    max-width: none;
-    flex-basis: 100%;
-  }
-  .col-nav-1-6 {
-    max-width: 16.6667%;
-    flex-basis: 16.6667%;
-  }
-  .col-nav-1-5 {
-    max-width: 20%;
-    flex-basis: 20%;
-  }
-  .col-nav-1-4 {
-    max-width: 25%;
-    flex-basis: 25%;
-  }
-  .col-nav-1-3 {
-    flex-basis: 33.3333%;
-    max-width: 33.3333%;
-  }
-  .col-nav-1-2 {
-    flex-basis: 50%;
-    max-width: 50%;
-  }
-  .col-nav-2-3 {
-    flex-basis: 66.6667%;
-    max-width: 66.6667%;
-  }
-  .col-nav-3-4 {
-    flex-basis: 75%;
-    max-width: 75%;
-  }
-  // Order classes
-  @for $i from 0 through 6 {
-    .nav-order-#{$i} {
-      order: $i;
-    }
-  }
+  @include colClasses('-nav');
+  @include spanClasses('-nav');
 }
 
 @include media-xl {
-  .xl-auto {
-    width: auto;
-    max-width: none;
-    flex-basis: auto;
-  }
-  .xl-full {
-    width: 100%;
-    max-width: none;
-    flex-basis: 100%;
-  }
-  .col-xl-1-6 {
-    max-width: 16.6667%;
-    flex-basis: 16.6667%;
-  }
-  .col-xl-1-5 {
-    max-width: 20%;
-    flex-basis: 20%;
-  }
-  .col-xl-1-4 {
-    max-width: 25%;
-    flex-basis: 25%;
-  }
-  .col-xl-1-3 {
-    flex-basis: 33.3333%;
-    max-width: 33.3333%;
-  }
-  .col-xl-1-2 {
-    flex-basis: 50%;
-    max-width: 50%;
-  }
-  .col-xl-2-3 {
-    flex-basis: 66.6667%;
-    max-width: 66.6667%;
-  }
-  .col-xl-3-4 {
-    flex-basis: 75%;
-    max-width: 75%;
-  }
-  // Order classes
-  @for $i from 0 through 6 {
-    .xl-order-#{$i} {
-      order: $i;
-    }
-  }
+  @include colClasses('-xl');
+  @include spanClasses('-xl');
 }
 
-// This allows js to determine breakpoint
-#breakpoint-indicator {
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
+// Flex Layout (using flex)
+.flex {
+  display: flex;
+  flex-wrap: wrap;
 
-  &::after {
-    content: 'xs';
-    @include media-sm {
-      content: 'sm';
-    }
-    @include media-md {
-      content: 'md';
-    }
-    @include media-lg {
-      content: 'lg';
-    }
-    @include media-nav {
-      content: 'nav';
-    }
-    @include media-xl {
-      content: 'xl';
+  > * {
+    flex: auto;
+  }
+
+  &.flex-column {
+    flex-direction: column;
+  }
+  &.flex-reverse {
+    flex-direction: row-reverse;
+  }
+
+  @include media-md {
+    flex-wrap: nowrap;
+
+    &.flex-wrap {
+      flex-wrap: wrap;
     }
   }
 }

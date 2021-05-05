@@ -5,28 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>Start Here.</title>
 
-    <link rel="stylesheet" href="dist/assets/styles/main.css" media="print" onload="this.media='all'; this.onload=null;">
-    <noscript>
-      <link rel="stylesheet" href="dist/assets/styles/main.css" media="all">
-    </noscript>
-
-    <link rel="stylesheet" href="dist/assets/styles/fonts.css" media="print" onload="this.media='all'; this.onload=null;">
-    <noscript>
-      <link rel="stylesheet" href="dist/assets/styles/fonts.css" media="all">
-    </noscript>
+    <link rel="stylesheet" href="dist/assets/styles/main.css" media="all">
+    <link rel="stylesheet" href="dist/assets/styles/fonts.css" media="all">
 
     <link rel="shortcut icon" type="image/ico" href="dist/assets/images/favicon.png">
 
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="canonical" href="">
-    <meta name="description" content="">
+    <meta name="description" property="og:description" content="">
     <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
     <meta property="og:url" content="" />
-    <meta property="og:description" content="" />
+    <meta property="og:image" content=""/>
+    <meta property="og:image:alt" content=""/>
+
 
     <!-- Inject SVGs Defs for SVG icon use -->
     <script>
@@ -42,25 +32,27 @@
     </script>
   </head>
   <body>
-    <div id="breakpoint-indicator"></div>
+    <a href="#main" class="skip-to-content">Skip to main content</a>
 
     <header class="site-header" role="banner">
       <div class="sitewrapper">
         <h1>Start Here.</h1>
+
         <nav class="site-nav" role="navigation">
 
         </nav>
       </div>
     </header>
 
-    <main class="site-main" role="main">
+    <main id="main" class="site-main" role="main">
       <div class="sitewrapper">
+
         <!-- Demo content: delete this junk! -->
         <div class="demo">
           <style>
-            .demo .box {
+            .demo .grid > *,
+            .demo .flex > * {
               padding: 50px;
-              margin-bottom: 50px;
               font-family: monospace;
               outline: 1px solid #000;
             }
@@ -70,62 +62,60 @@
           <p>Start here, and carry on.</p>
           <p><svg class="icon icon-smiley" aria-hidden="true" role="presentation"><use xlink:href="#icon-smiley"/></svg></p>
 
-          <div class="grid spaced">
+          <h2>Grid Layout (<code>.grid</code>)</h2>
+          <div class="grid grid-spaced">
             <!-- halves -->
-            <div class="col-md-1-2">
-              <div class="box">
-                <h4>.col-md-1-2</h4>
-              </div>
+            <div class="col-1-2">
+              <h4>.col-1-2</h4>
             </div>
-            <div class="col-md-1-2">
-              <div class="box">
-                <h4>.col-md-1-2</h4>
-              </div>
+            <div class="col-1-2">
+              <h4>.col-1-2</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quas cupiditate aut, officia dolor dicta ullam id odio dolore animi optio numquam error! Dolore incidunt illo pariatur molestiae dolores eius?</p>
             </div>
             <!-- END halves -->
             <!-- thirds -->
             <div class="col-md-1-3">
-              <div class="box">
-                <h4>.col-md-1-3</h4>
-              </div>
+              <h4>.col-md-1-3</h4>
             </div>
             <div class="col-md-2-3">
-              <div class="box">
-                <h4>.col-md-2-3</h4>
-              </div>
+              <h4>.col-md-2-3</h4>
             </div>
             <!-- END thirds -->
             <!-- quarters -->
-            <div class="col-md-1-4">
-              <div class="box">
-                <h4>.col-md-1-4</h4>
-              </div>
+            <div class="col-1-2 col-md-1-4">
+              <h4>.col-1-2.col-md-1-4</h4>
             </div>
-            <div class="col-md-1-2">
-              <div class="box">
-                <h4>.col-md-1-2</h4>
-              </div>
+            <div class="col-1-2">
+              <h4>.col-1-2</h4>
             </div>
-            <div class="col-md-1-4">
-              <div class="box">
-                <h4>.col-md-1-4</h4>
-              </div>
+            <div class="col-1-3 col-md-1-4">
+              <h4>.col-1-3.col-md-1-4</h4>
             </div>
-            <div class="col-md-3-4">
-              <div class="box">
-                <h4>.col-md-3-4</h4>
-              </div>
+            <div class="col-1-3 col-md-3-4">
+              <h4>.col-1-3.col-md-3-4</h4>
             </div>
-            <div class="col-md-1-4">
-              <div class="box">
-                <h4>.col-md-1-4</h4>
-              </div>
+            <div class="col-1-3 col-md-1-4">
+              <h4>.col-1-3.col-md-1-4</h4>
             </div>
             <!-- END quarters -->
           </div>
+
+          <h2>Flex Layout (<code>.flex</code>)</h2>
+          <div class="flex grid-spaced">
+            <div>
+              <p>Lorem ipsum dolor sit.</p>
+            </div>
+            <div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ipsa provident consectetur quidem nobis quam, magni porro placeat magnam repellendus quia soluta doloremque, iure vitae, quo ut aspernatur esse architecto.</p>
+            </div>
+            <div>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, accusantium. Ullam omnis dolore tempora, aliquid cumque, provident illo odit beatae architecto, excepturi porro rerum. Porro hic soluta excepturi ipsum id. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum similique doloribus soluta exercitationem vel totam veniam sapiente facere ipsam, architecto dolorem unde iure aperiam quas pariatur incidunt, ex velit illo?</p>
+            </div>
+          </div>
         </div>
         <!-- END demo content junk -->
-      </div>
+
+      </div><!-- .sitewrapper -->
     </main>
 
     <footer class="site-footer" role="contentinfo">
@@ -133,6 +123,8 @@
         <p>Footer.</p>
       </div>
     </footer>
+
+    <div id="breakpoint-indicator"></div>
 
     <script src="dist/assets/scripts/manifest.js"></script>
     <script src="dist/assets/scripts/vendor.js"></script>

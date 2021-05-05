@@ -5,6 +5,7 @@
 ## A boilerplate I use for starting new static projects.
 
 The boilerplate runs on the following resources:
+* [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/)
 * [SASS (SCSS syntax)](http://sass-lang.com/)
 * [Laravel-mix](https://laravel-mix.com/)
 * [Webpack](https://webpack.js.org/)
@@ -44,4 +45,5 @@ HTML files in the root and assets saved to `/assets` are working files. Assets i
 ```
 
 ## To-do:
-- [ ] Convert grid system to use css grid instead of flex
+- [x] Convert grid system to use css grid instead of flex
+- [ ] Refactor js to remove JQuery

@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "jquery": "^3.4",
-    "js-dom-router": "^1.0"
+    "js-dom-router": "^1.0",
+    "normalize.css": "^8.0.1"
   }
 }

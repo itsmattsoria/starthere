@@ -44,3 +44,45 @@ img[src$=".svg"] {
     padding: 0 $padding-md;
   }
 }
+
+// Skip To Main Content
+.skip-to-content {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 12px;
+  position: absolute;
+  border: 3px solid blue;
+  background: color('white');
+  transform: translateY(-100%);
+  &:focus {
+    transform: translateY(0%);
+  }
+}
+
+// This allows js to determine breakpoint
+#breakpoint-indicator {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+
+  &::after {
+    content: 'xs';
+    @include media-sm {
+      content: 'sm';
+    }
+    @include media-md {
+      content: 'md';
+    }
+    @include media-lg {
+      content: 'lg';
+    }
+    @include media-nav {
+      content: 'nav';
+    }
+    @include media-xl {
+      content: 'xl';
+    }
+  }
+}
