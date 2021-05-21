@@ -17,7 +17,7 @@ def production():
   env.remote_protocol = 'https'
 
 def build():
-  local('npx gulp --production')
+  local('npx yarn --production')
 
 def deploy():
   update()
