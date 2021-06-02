@@ -40,6 +40,16 @@ $column-width: math.div(100%, $columns);
   }
 }
 
+// Auto Grid Styles Mixin
+@mixin autoGrid {
+  grid-auto-flow: column;
+  grid-template-columns: unset;
+
+  > * {
+    grid-column: auto;
+  }
+}
+
 // Default Grid based $columns
 // Uses CSS grid: https://developer.mozilla.org/en-US/docs/Web/CSS/grid
 .grid {
@@ -53,10 +63,31 @@ $column-width: math.div(100%, $columns);
 
   // Auto layout
   &.grid-auto {
-    grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min, 250px), 100%), 1fr));
-
-    > * {
-      grid-column: auto;
+    @include autoGrid;
+  }
+  @include media-sm {
+    .grid-auto-sm {
+      @include autoGrid;
+    }
+  }
+  @include media-md {
+    .grid-auto-md {
+      @include autoGrid;
+    }
+  }
+  @include media-lg {
+    .grid-auto-lg {
+      @include autoGrid;
+    }
+  }
+  @include media-nav {
+    .auto-grid-nav {
+      @include autoGrid;
+    }
+  }
+  @include media-xl {
+    .auto-grid-xl {
+      @include autoGrid;
     }
   }
 }
