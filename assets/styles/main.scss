@@ -1,22 +1,22 @@
 @charset "UTF-8";
 
 // Reset
-@import "../../node_modules/normalize.css/normalize";
+@use "../../node_modules/normalize.css/normalize";
 
 // Helpers and Variables
-@import "helpers/mixins";
-@import "helpers/variables";
-@import "helpers/colors";
-@import "helpers/typography";
-@import "helpers/utility";
-@import "helpers/grid";
+@use "helpers/mixins";
+@use "helpers/variables";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "helpers/utility";
+@use "helpers/grid";
 
 // Vendor
 
 // Components
-@import "components/base";
-@import "components/header";
-@import "components/footer";
+@use "components/base";
+@use "components/header";
+@use "components/footer";
 
 // Pages
-@import "pages/home";
+@use "pages/home";

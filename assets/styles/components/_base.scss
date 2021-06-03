@@ -1,3 +1,6 @@
+@use "../helpers/mixins";
+@use "../helpers/variables";
+
 //base styles
 *, *:before, *:after {
   box-sizing: inherit;
@@ -9,8 +12,8 @@ html {
 
 body {
   font-size: 16px;
-  color: color('black');
-	background: color('white');
+  color: variables.color('black');
+	background: variables.color('white');
 }
 
 a {
@@ -37,11 +40,11 @@ img[src$=".svg"] {
   width: 100%;
   margin: 0 auto;
   position: relative;
-  @include clearfix();
-  padding: 0 $padding-sm;
-  max-width: $sitewrapper;
-  @include media-md {
-    padding: 0 $padding-md;
+  @include mixins.clearfix();
+  padding: 0 variables.$padding-sm;
+  max-width: variables.$sitewrapper;
+  @include mixins.media-md {
+    padding: 0 variables.$padding-md;
   }
 }
 
@@ -53,7 +56,7 @@ img[src$=".svg"] {
   padding: 12px;
   position: absolute;
   border: 3px solid blue;
-  background: color('white');
+  background: variables.color('white');
   transform: translateY(-100%);
   &:focus {
     transform: translateY(0%);
@@ -69,19 +72,19 @@ img[src$=".svg"] {
 
   &::after {
     content: 'xs';
-    @include media-sm {
+    @include mixins.media-sm {
       content: 'sm';
     }
-    @include media-md {
+    @include mixins.media-md {
       content: 'md';
     }
-    @include media-lg {
+    @include mixins.media-lg {
       content: 'lg';
     }
-    @include media-nav {
+    @include mixins.media-nav {
       content: 'nav';
     }
-    @include media-xl {
+    @include mixins.media-xl {
       content: 'xl';
     }
   }

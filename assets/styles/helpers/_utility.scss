@@ -1,3 +1,5 @@
+@use "mixins";
+
 // Utility Classes
 
 // Visibility
@@ -32,7 +34,7 @@
 // Clearfix
 .clearfix,
 .cf {
-  @include clearfix;
+  @include mixins.clearfix;
 }
 
 // Semantic List

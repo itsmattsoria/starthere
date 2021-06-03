@@ -1,3 +1,6 @@
+@use "mixins";
+@use "variables";
+
 // Grid
 
 @use 'sass:math';
@@ -16,27 +19,27 @@ $column-width: math.div(100%, $columns);
 }
 
 .grid-spaced {
-  gap: $padding-sm;
+  gap: variables.$padding-sm;
 
-  @include media-md {
-    gap: $padding-md;
+  @include mixins.media-md {
+    gap: variables.$padding-md;
   }
 
-  @include media-lg {
+  @include mixins.media-lg {
     &.spaced-lg {
-      gap: $padding-lg;
+      gap: variables.$padding-lg;
     }
   }
 }
 // If you need the grid to have a gutter,
 // add 'gutter' as a class to the '.grid' container
 .grid-gutter {
-  padding-left: $padding-sm;
-  padding-right: $padding-sm;
+  padding-left: variables.$padding-sm;
+  padding-right: variables.$padding-sm;
 
-  @include media-md {
-    padding-left: $padding-md;
-    padding-right: $padding-md;
+  @include mixins.media-md {
+    padding-left: variables.$padding-md;
+    padding-right: variables.$padding-md;
   }
 }
 
@@ -65,27 +68,27 @@ $column-width: math.div(100%, $columns);
   &.grid-auto {
     @include autoGrid;
   }
-  @include media-sm {
+  @include mixins.media-sm {
     .grid-auto-sm {
       @include autoGrid;
     }
   }
-  @include media-md {
+  @include mixins.media-md {
     .grid-auto-md {
       @include autoGrid;
     }
   }
-  @include media-lg {
+  @include mixins.media-lg {
     .grid-auto-lg {
       @include autoGrid;
     }
   }
-  @include media-nav {
+  @include mixins.media-nav {
     .auto-grid-nav {
       @include autoGrid;
     }
   }
-  @include media-xl {
+  @include mixins.media-xl {
     .auto-grid-xl {
       @include autoGrid;
     }
@@ -123,27 +126,27 @@ $column-width: math.div(100%, $columns);
 @include colClasses();
 @include spanClasses();
 
-@include media-sm {
+@include mixins.media-sm {
   @include colClasses('-sm');
   @include spanClasses('-sm');
 }
 
-@include media-md {
+@include mixins.media-md {
   @include colClasses('-md');
   @include spanClasses('-md');
 }
 
-@include media-lg {
+@include mixins.media-lg {
   @include colClasses('-lg');
   @include spanClasses('-lg');
 }
 
-@include media-nav {
+@include mixins.media-nav {
   @include colClasses('-nav');
   @include spanClasses('-nav');
 }
 
-@include media-xl {
+@include mixins.media-xl {
   @include colClasses('-xl');
   @include spanClasses('-xl');
 }
@@ -164,7 +167,7 @@ $column-width: math.div(100%, $columns);
     flex-direction: row-reverse;
   }
 
-  @include media-md {
+  @include mixins.media-md {
     flex-wrap: nowrap;
 
     &.flex-wrap {

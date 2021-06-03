@@ -1,48 +1,43 @@
-// Mixins
+@use "variables";
 
-// Ye olde clearfix
-@mixin clearfix {
-  &:after {
-    content: '';
-    clear: both;
-    display: table;
-  }
-}
+// Mixins
 
 // Smooth text
 @mixin smooth {
-  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 // Responsive mixins by Andy Richardson (@andimal): https://github.com/andimal/sass-responsive-mixin-madness
 @mixin media-xs() {
-  @media screen and (max-width: $breakpoint-sm - 1) {
+  @media screen and (max-width: variables.$breakpoint-sm - 1) {
     @content;
   }
 }
 @mixin media-sm() {
-  @media screen and (min-width: $breakpoint-sm) {
+  @media screen and (min-width: variables.$breakpoint-sm) {
     @content;
   }
 }
 @mixin media-md() {
-  @media screen and (min-width: $breakpoint-md) {
+  @media screen and (min-width: variables.$breakpoint-md) {
     @content;
   }
 }
 @mixin media-lg() {
-  @media screen and (min-width: $breakpoint-lg) {
+  @media screen and (min-width: variables.$breakpoint-lg) {
     @content;
   }
 }
 @mixin media-nav() {
-  @media screen and (min-width: $breakpoint-nav) {
+  @media screen and (min-width: variables.$breakpoint-nav) {
     @content;
   }
 }
 @mixin media-xl() {
-  @media screen and (min-width: $breakpoint-xl) {
+  @media screen and (min-width: variables.$breakpoint-xl) {
     @content;
   }
 }
