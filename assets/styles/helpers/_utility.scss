@@ -31,12 +31,6 @@
   overflow: hidden;
 }
 
-// Clearfix
-.clearfix,
-.cf {
-  @include mixins.clearfix;
-}
-
 // Semantic List
 .semantic-list {
   margin: 0;

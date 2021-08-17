@@ -1,13 +1,6 @@
 @use "variables";
 
 // Mixins
-@mixin clearfix {
-  &::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
 
 // Smooth text
 @mixin smooth {
