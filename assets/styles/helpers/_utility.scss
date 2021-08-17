@@ -34,7 +34,7 @@
 // Clearfix
 .clearfix,
 .cf {
-  @include mixins.clearfix;
+  display: flow-root;
 }
 
 // Semantic List
