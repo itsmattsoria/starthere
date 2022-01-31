@@ -4,6 +4,7 @@ const appState = {
   isAnimating: false,
   navOpen: false,
   breakpoints: {},
+  reducedMotionMQ: window.matchMedia('(prefers-reduced-motion: reduce)'),
 
   init() {
     // Bind updateBreakpoints to domready and resize
