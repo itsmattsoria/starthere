@@ -40,7 +40,6 @@ img[src$=".svg"] {
   width: 100%;
   margin: 0 auto;
   position: relative;
-  @include mixins.clearfix();
   padding: 0 variables.$padding-sm;
   max-width: variables.$sitewrapper;
   @include mixins.media-md {
