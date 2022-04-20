@@ -1,5 +1,5 @@
-@use "mixins";
-@use "variables";
+@use "mixins" as *;
+@use "variables" as;
 
 // Grid
 
@@ -18,28 +18,30 @@ $column-width: math.div(100%, $columns);
   width: columns(1);
 }
 
-.grid-spaced {
-  gap: variables.$padding-sm;
+.grid--spaced,
+.grid--spaced-lg {
+  gap: padding(sm);
 
-  @include mixins.media-md {
-    gap: variables.$padding-md;
-  }
-
-  @include mixins.media-lg {
-    &.spaced-lg {
-      gap: variables.$padding-lg;
-    }
+  @include media-md {
+    gap: padding(md);
   }
 }
+
+.grid--spaced-lg {
+  @include media-lg {
+    gap: padding(xl);
+  }
+}
+
 // If you need the grid to have a gutter,
 // add 'gutter' as a class to the '.grid' container
-.grid-gutter {
-  padding-left: variables.$padding-sm;
-  padding-right: variables.$padding-sm;
+.grid--gutter {
+  padding-left: padding(sm);
+  padding-right: padding(sm);
 
-  @include mixins.media-md {
-    padding-left: variables.$padding-md;
-    padding-right: variables.$padding-md;
+  @include media-md {
+    padding-left: padding(md);
+    padding-right: padding(md);
   }
 }
 
@@ -48,7 +50,7 @@ $column-width: math.div(100%, $columns);
   grid-auto-flow: column;
   grid-template-columns: unset;
 
-  > * {
+  >* {
     grid-column: auto;
   }
 }
@@ -60,36 +62,41 @@ $column-width: math.div(100%, $columns);
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
 
-  > * {
+  >* {
     grid-column: span $columns;
   }
 
   // Auto layout
-  &.grid-auto {
+  &.grid--auto {
     @include autoGrid;
   }
-  @include mixins.media-sm {
-    .grid-auto-sm {
+
+  @include media-sm {
+    .grid--auto-sm {
       @include autoGrid;
     }
   }
-  @include mixins.media-md {
-    .grid-auto-md {
+
+  @include media-md {
+    .grid--auto-md {
       @include autoGrid;
     }
   }
-  @include mixins.media-lg {
-    .grid-auto-lg {
+
+  @include media-lg {
+    .grid--auto-lg {
       @include autoGrid;
     }
   }
-  @include mixins.media-nav {
-    .auto-grid-nav {
+
+  @include media-nav {
+    .auto--grid-nav {
       @include autoGrid;
     }
   }
-  @include mixins.media-xl {
-    .auto-grid-xl {
+
+  @include media-xl {
+    .auto--grid-xl {
       @include autoGrid;
     }
   }
@@ -100,8 +107,9 @@ $column-width: math.div(100%, $columns);
   @for $i from 1 through math.div($columns, 2) {
     @for $j from 1 through math.div($columns, 2) {
       @if $i < $j {
-        @if $i > 1 and math.div($i, $j) == math.div(1, 2) or $i > 1 and math.div($i, $j) == math.div(1, 3) or $i > 2 and math.div($i, $j) == math.div(2, 3) {
-        } @else {
+        @if $i>1 and math.div($i, $j)==math.div(1, 2) or $i>1 and math.div($i, $j)==math.div(1, 3) or $i>2 and math.div($i, $j)==math.div(2, 3) {}
+
+        @else {
           .col#{$breakpoint}-#{$i}-#{$j} {
             grid-column: span #{math.div($columns, $j) * $i };
           }
@@ -110,11 +118,21 @@ $column-width: math.div(100%, $columns);
     }
   }
 }
-// Easey span classes for each breakpoint
+
+// Easy span classes for each breakpoint
 @mixin spanClasses($breakpoint: '') {
   @for $i from 1 through $columns {
     .span#{$breakpoint}-#{$i} {
       grid-column: span #{$i};
+    }
+  }
+}
+
+// Easy order classes for each breakpoint
+@mixin orderClasses($breakpoint: '') {
+  @for $i from 1 through $columns {
+    .order#{$breakpoint}-#{$i} {
+      order: #{$i};
     }
   }
 }
@@ -125,30 +143,36 @@ $column-width: math.div(100%, $columns);
 // 1/3 = 'col-1-3', 2/3 = 'col-2-3', etc.
 @include colClasses();
 @include spanClasses();
+@include orderClasses();
 
-@include mixins.media-sm {
+@include media-sm {
   @include colClasses('-sm');
   @include spanClasses('-sm');
+  @include orderClasses('-sm');
 }
 
-@include mixins.media-md {
+@include media-md {
   @include colClasses('-md');
   @include spanClasses('-md');
+  @include orderClasses('-md');
 }
 
-@include mixins.media-lg {
+@include media-lg {
   @include colClasses('-lg');
   @include spanClasses('-lg');
+  @include orderClasses('-lg');
 }
 
-@include mixins.media-nav {
+@include media-nav {
   @include colClasses('-nav');
   @include spanClasses('-nav');
+  @include orderClasses('-nav');
 }
 
-@include mixins.media-xl {
+@include media-xl {
   @include colClasses('-xl');
   @include spanClasses('-xl');
+  @include orderClasses('-xl');
 }
 
 // Flex Layout (using flex)
@@ -156,22 +180,40 @@ $column-width: math.div(100%, $columns);
   display: flex;
   flex-wrap: wrap;
 
-  > * {
+  &.flex--auto>* {
     flex: auto;
   }
 
-  &.flex-column {
+  &.flex--column {
     flex-direction: column;
   }
-  &.flex-reverse {
+
+  &.flex--reverse {
     flex-direction: row-reverse;
   }
 
-  @include mixins.media-md {
+  @include media-md {
     flex-wrap: nowrap;
 
-    &.flex-wrap {
+    &.flex--wrap {
       flex-wrap: wrap;
+    }
+  }
+}
+
+// Standard Gaps
+.gap {
+  gap: 15px;
+
+  &--sm {
+    gap: 10px;
+  }
+
+  @include media-md {
+    gap: 20px;
+
+    &--md {
+      gap: 15px;
     }
   }
 }
